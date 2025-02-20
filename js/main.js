@@ -7,11 +7,31 @@
  */
 
 /**
- * This function prints the string 'Hello World' to the console
+ * This function prints the string 'Hello World' to the console **THIS FUNCTION NOW IS UPDATED FOR THE RADIO BUTTONS**
  */
-export function helloWorld() {
-    console.log('Hello World');
+export function getSelectedRadioValue(radioButtons) {
+    for (let radio of radioButtons) {
+        if (radio.checked) {
+            return radio.value;
+        }
+    }
+    return null;
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const submitButton = document.getElementById("submitButton");
+    const radioButtons = document.querySelectorAll('input[name="choice"]');
+
+    submitButton.addEventListener("click", function () {
+        const selectedValue = getSelectedRadioValue(radioButtons);
+        if (selectedValue) {
+            alert(selectedValue);
+        } else {
+            alert("Please select an option.");
+        }
+    });
+});
+
 
 /**
  * This function adds two numbers together and returns the sum. This demonstrates
